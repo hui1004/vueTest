@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dialog.css">
+    <title>Document</title>
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity: 0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition: opacity linear 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <vue-dialog :sure-btn="sureBtn"></vue-dialog>
+    </div>
+    <script src="js/fontReset.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="components/dialog.js"></script>
+    <script>
+        Vue.prototype.$http = axios;
+
+        let vue = new Vue({
+            el:'#app',
+            methods:{
+                sureBtn:function(){
+                    location.href = 'demo.html';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

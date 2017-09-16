@@ -1,0 +1,93 @@
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+}
+
+.mark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.transfer {
+  min-width: 8rem;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.transfer .transfer-record {
+  line-height: 0.7rem;
+  text-align: center;
+  background: #F0F0F0;
+  font-size: .3rem;
+  color: #896E6E;
+}
+
+.transfer .transfer-details {
+  padding: .2rem .3rem;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  border-bottom: .01rem solid #806666;
+  border-top: .01rem solid #806666;
+}
+
+.transfer .transfer-details .transfer-item {
+  width: 33.3%;
+  font-size: .2rem;
+  margin-bottom: .3rem;
+  cursor: pointer;
+}
+
+.transfer .transfer-details .transfer-item.default > span {
+  color: #E96159;
+}
+
+.transfer .transfer-details .transfer-item > span {
+  color: #333333;
+}
+
+.transfer .transfer-details .transfer-item > span:last-child {
+  display: block;
+  padding-top: .1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transfer .btns {
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .2rem 1.5rem;
+}
+
+.transfer .btns > button {
+  width: 1.8rem;
+  height: 0.7rem;
+  border-radius: 100px;
+  background-color: #fff;
+}
+
+.transfer .btns > button.verify {
+  color: #E74A41;
+  border: .01rem solid #E74A41;
+}
+
+.transfer .btns > button.cancel {
+  border-width: 0;
+  color: #fff;
+  background: linear-gradient(to right, #F3AF5A, #E96159);
+}
+ 
+
+ /*# sourceMappingURL= dialog.css.map */
