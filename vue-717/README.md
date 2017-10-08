@@ -166,10 +166,10 @@
         <pre>
             delItem(state,idArr) { // 购物车删除数据
                 let temp = [],tempArr = [];
-                for(let i=0;i<idArr.length;i++){
+                for(let i=0;i&lt;idArr.length;i++){
                     temp[idArr[i]] = true;
                 }
-                for(let i=0;i<state.cart_list.length;i++){
+                for(let i=0;i&lt;state.cart_list.length;i++){
                     if(!temp[state.cart_list[i].id]){
                         tempArr.push(state.cart_list[i]);
                     }
