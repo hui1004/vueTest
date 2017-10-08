@@ -44,7 +44,7 @@
         
 * 首页
     1. 在首页用swiper做banner图的轮播效果，利用icon图标做图标列表，减少浏览器的请求速度。
-        `
+        <pre>
             mounted() {
                 new Swiper('.swiper-banner', {
                     pagination: '.swiper-pagination',
@@ -57,12 +57,12 @@
                     loop: true
                 })
             }
-        `
+        </pre>
 
     2. 使用vuex中的store进行数据存储，对列表中的每个产品进行组件化封装，之后利用路由跳转到详情页。
 
     3. 家乡味道等数据用下拉加载实现，监听scroll事件，判断container滚动的距离离屏幕顶部多远 小于阙值，就去请求数据。当所有商品配请求完，则不再请求。
-        `
+        <pre>
             load_goods(){ // 上拉加载数据
                 let container = this.$refs.container;
                 let max_height = container.querySelector('.main').offsetHeight - container.offsetHeight;
@@ -89,10 +89,10 @@
                     // console.log(this.goods_channel);
                 })
             }
-        `
+        </pre>
 
     4. 单个产品组件：点击购物车图标时，获取cookie中的token，判断是否为用户登陆状态，没有登录则提示用户先登录，登录状态下，将商品的各项参数，以及用户登录返回的token提交给mock，后台接收到后将token作为key，商品信息作为value存储在localstorage中。
-        `
+        <pre>
             add_to_cart() {
                 let token = document.cookie.split('=')[1];
                 if (token) {
@@ -123,11 +123,11 @@
                     this.$emit('show-mark', {bool:true,desc:'请先登录'});
                 }
             }
-        `
+        </pre>
 
 * 分类页
     1. 利用axios拦截器请求数据，通过路由传参进行参数匹配、数据渲染，实现产品列表效果。
-        `
+        <pre>
             <router-link :to="{name:'catagory',params:{index:0}}" tag="li">
                 <span class="icon iconfont icon-apps"></span>
                 <span>分类</span>
@@ -138,11 +138,11 @@
                 path: 'catagory/:index?',
                 component: catagory
             }
-        `
+        </pre>
 
 * 购物页
     1. 通过变量来控制空的购物车页与有商品的购物车页面之前的切换，通过set注册新的变量到vue的监听里去，用来控制产品的单选和全选。通过v-model来控制变量改变产品数量的增减，使用自定义过滤器来过滤金额。
-        `
+        <pre>
             selected(item) { // 单选
                 if (typeof item.checked == 'undefined') { // 通过检测其类型来判断数据是否存在该变量
                     // Vue.set(item, "checked", true); // 在数据里全局注册变量
@@ -159,10 +159,10 @@
                 this.checked_all = flag;
                 this.sum(); // 求和
             }
-        `
+        </pre>
 
     2. 编辑状态下,将选中的商品id, push到数组里,将数组提交到vuex的store里，运用store里的mutations来遍历购物车商品数组和id数组，从而排重，然后删除选中数据。通过路由钩子beforeRouteEnter将用户登陆的token和其购物车数据绑定到一起。
-        `
+        <pre>
             delItem(state,idArr) { // 购物车删除数据
                 let temp = [],tempArr = [];
                 for(let i=0;i<idArr.length;i++){
@@ -175,11 +175,11 @@
                 }
                 state.cart_list = tempArr;
             }
-        `
+        </pre>
             
 * 我的页面
     1. 注册：首先进行格式验证，将成功的注册信息保存到本地存储中，方便登录时进行验证。
-        `
+        <pre>
             register() {
                 let telReg = /^1(3|5|7|8)\d{9}$/;
                 let pwdReg = /^\w{6,20}$/;
@@ -224,10 +224,10 @@
                 }
 
             })
-        `
+        </pre>
 
     2. 登录：每次进入我的路由前通过获取cookie信息判断是否为登录状态，若token已存在表示已登录，则直接进入，否则先进入登录页
-        `
+        <pre>
             router.beforeEach(function (to, from, next) {
                 if (to.name == 'login') {
                     next()
@@ -253,10 +253,10 @@
                     next()
                 }
             })
-        `
+        </pre>
 
     3. 点击登录时：首先判断格式是否正确，错误给出相应提示，正确将相应信息发送给后台，在后台进行登录信息验证，返回对应信息，并在成功时将登录信息保存到cookie中，根据返回值判断，成功就跳转到我的页面，否则提示用户注册。
-        `
+        <pre>
             login() {
                 let telReg = /^1(3|5|7|8)\d{9}$/;
                 let pwdReg = /^\w{6,20}$/;
@@ -299,20 +299,20 @@
                     }]
                 }
             })
-        `
+        </pre>
 
     4. 点击地址管理时，跳转路由到地址页面，并在进入前进行请求，判断当前账号下是否有相关的地址信息
-        `
+        <pre>
             created() {
                 let token = document.cookie.match(/717-token=(\d+)/)[1];
                 this.$http.get('address/addressList', { token: token }).then(res => {
                     this.address_list = res.data;
                 })
             }
-        `
+        </pre>
 
     5. 点击删除时，取到要删除的地址对应的id ，根据id在本地存储中删除对应的地址。
-        `
+        <pre>
             // 子组件
             delAdr(item){
                 let _this = this;
@@ -337,19 +337,19 @@
                 address_info[token] = this.address_list;
                 ls.setItem('address-info', JSON.stringify(address_info));
             }
-        `
+        </pre>
 
     6. 点击编辑时，携带对应的id跳转。
-        `
+        <pre>
             editAdr(item){
                 this.$router.push({name:'addAddress',params:{id:item.id}});
             }
-        `
+        </pre>
     
     7. 进入新增地址页时，判断是否带有参数，若有参数则为编辑，向后台请求相关信息，渲染页面，没有参数则为空白的添加地址页，同时请求城市信息。
 
     8. 保存地址时，首先判断信息是否填写完整，没有填写完整则给出相应的用户提示，完整则向后台发送请求，将地址信息保存到当前登录用户名下，并保存到本地存储中。
-        `
+        <pre>
             save() { // 保存
                 let telReg = /^1(3|4|5|7|8)\d{9}$/;
                 let token = document.cookie.match(/717-token=(\d+)/)[1]; //717-token=18672870077
@@ -392,7 +392,7 @@
 
                 }
             }
-        `
+        </pre>
 
 # 项目git地址
 
