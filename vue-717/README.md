@@ -16,8 +16,6 @@
         目录store: vuex状态管理
         目录views: 存放路由视图
 
-    项目总结：
-
 * 仿照717商城，实现717商城首页，商品详情页，用户登录注册页，购物车等效果。
 
 * 工具es6、vue、mock、vuex、router-loader、swiper、vue-router、axios、Gulp等。
@@ -137,7 +135,31 @@
                 })
                 this.checked_all = flag;
                 this.sum(); // 求和
-            }
+            },
+            changeCount(product, way) { // 增减数量
+                if (way > 0) {
+                    product.count++;
+                } else {
+                    product.count--;
+                    if (product.count < 1) {
+                        product.count = 1;
+                    }
+                }
+                this.sum();
+            },
+            sum() { // 求和
+                this.total_price = 0;
+                this.cart_list.forEach(item => {
+                    if (item.checked) {
+                        this.total_price += item.price * item.count;
+                    }
+                })
+            },
+            filters: { // 格式化金额
+                filter_money: function(val, type) {
+                    return "￥" + val.toFixed(2) + type;
+                }
+            } 
         </pre>
 
     2. 编辑状态下,将选中的商品id, push到数组里,将数组提交到vuex的store里，运用store里的mutations来遍历购物车商品数组和id数组，从而排重，然后删除选中数据。通过路由钩子beforeRouteEnter将用户登陆的token和其购物车数据绑定到一起。
