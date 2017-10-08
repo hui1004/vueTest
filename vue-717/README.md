@@ -7,34 +7,34 @@
 
 # 项目目录
 
-|-- mock                // 生成随机数据，拦截Ajax请求,开始前后端分离
-|   |-- mock.js         
-|-- service             // json数据
-|   |-- addCart.json    
-|   |-- catagory.json
-|   |-- city.json
-|   |-- goods_channel.json
-|--src              
-|   |--assets
-|   |--components       // 组件
-|       |-- global_mask // 遮罩层
-|       |-- goods       // 单个商品
-|       |-- recommend   // 热门推荐
-|       |-- tips        // 提示框
-|   |--css              // 公用样式
-|   |--font             // 字体图标
-|   |--imgs             // 图片
-|   |--js
-|   |--plugins
-|       |--dialog       // dialog插件
-|   |--route            // 路由配置
-|   |--store            // vuex状态管理
-|   |--views            // 各页面视图模板
-|   |--app.vue          
-|   |--main.js    
-|--index.html
-|--package.json         // 包管理文件      
-|--webpack.config.js    // 配置文件     
+> mock                // 生成随机数据，拦截Ajax请求,开始前后端分离
+    >> mock.js         
+> service             // json数据
+    >> addCart.json    
+    >> catagory.json
+    >> city.json
+    >> goods_channel.json
+> src              
+    >> assets
+    >> components       // 组件
+        >>> global_mask // 遮罩层
+        >>> goods       // 单个商品
+        >>> recommend   // 热门推荐
+        >>> tips        // 提示框
+    >> css              // 公用样式
+    >> font             // 字体图标
+    >> imgs             // 图片
+    >> js
+    >> plugins
+        >>> dialog       // dialog插件
+    >> route            // 路由配置
+    >> store            // vuex状态管理
+    >> views            // 各页面视图模板
+    >> app.vue          
+    >> main.js    
+> index.html
+> package.json         // 包管理文件      
+> webpack.config.js    // 配置文件     
 
 # 项目总结
 
@@ -127,12 +127,11 @@
 
 * 分类页
     1. 利用axios拦截器请求数据，通过路由传参进行参数匹配、数据渲染，实现产品列表效果。
+        <router-link :to="{name:'catagory',params:{index:0}}" tag="li">
+            <span class="icon iconfont icon-apps"></span>
+            <span>分类</span>
+        </router-link>
         <pre>
-            <router-link :to="{name:'catagory',params:{index:0}}" tag="li">
-                <span class="icon iconfont icon-apps"></span>
-                <span>分类</span>
-            </router-link>
-            
             {
                 name: 'catagory',
                 path: 'catagory/:index?',
