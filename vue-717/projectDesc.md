@@ -15,7 +15,6 @@
     2. 使用vuex中的store进行数据存储，对列表中的每个产品进行组件化封装，之后利用路由跳转到详情页。
     3. 家乡味道等数据用下拉加载实现，监听scroll事件，判断container滚动的距离离屏幕顶部多远 小于阙值，就去请求数据
 
-    Code:
         load_goods(){ // 上拉加载数据
             let container = this.$refs.container;
             let max_height = container.querySelector('.main').offsetHeight - container.offsetHeight;
@@ -53,7 +52,6 @@
 * 购物页
     1. 通过变量来控制空的购物车页与有商品的购物车页面之前的切换，通过set注册新的变量到vue的监听里去，用来控制产品的单选和全选。通过v-model来控制变量改变产品数量的增减，使用自定义过滤器来过滤金额。
 
-    Code: 
         selected(item) { // 单选
             if (typeof item.checked == 'undefined') { // 通过检测其类型来判断数据是否存在该变量
                 // Vue.set(item, "checked", true); // 在数据里全局注册变量
@@ -73,26 +71,24 @@
 
     2. 编辑状态下,将选中的商品id, push到数组里,将数组提交到vuex的store里，运用store里的mutations来遍历购物车商品数组和id数组，从而排重，然后删除选中数据。通过路由钩子beforeRouteEnter将用户登陆的token和其购物车数据绑定到一起。
 
-        Code:
-            delItem(state,idArr) { // 购物车删除数据
-                let temp = [],tempArr = [];
-                for(let i=0;i<idArr.length;i++){
-                    temp[idArr[i]] = true;
-                };
-                for(let i=0;i<state.cart_list.length;i++){
-                    if(!temp[state.cart_list[i].id]){
-                        tempArr.push(state.cart_list[i]);
-                    }
-                };
-                state.cart_list = tempArr;
-            }
+        delItem(state,idArr) { // 购物车删除数据
+            let temp = [],tempArr = [];
+            for(let i=0;i<idArr.length;i++){
+                temp[idArr[i]] = true;
+            };
+            for(let i=0;i<state.cart_list.length;i++){
+                if(!temp[state.cart_list[i].id]){
+                    tempArr.push(state.cart_list[i]);
+                }
+            };
+            state.cart_list = tempArr;
+        }
             
 * 我的页面
     1. 注册：首先进行格式验证，将成功的注册信息保存到本地存储中，方便登录时进行验证。
 
     2. 登录：每次进入我的路由前通过获取cookie信息判断是否为登录状态，若token已存在表示已登录，则直接进入，否则先进入登录页
 
-    Code: 
         router.beforeEach(function (to, from, next) {
             if (to.name == 'login') {
                 next()
@@ -125,7 +121,6 @@
 
     4. 点击地址管理时，跳转路由到地址页面，并在进入前进行请求，判断当前账号下是否有相关的地址信息
     
-    Code:
         created() {
             let token = document.cookie.match(/717-token=(\d+)/)[1];
             this.$http.get('address/addressList', { token: token }).then(res => {
@@ -137,7 +132,6 @@
 
     6. 点击编辑时，携带对应的id跳转
 
-        Code:
             editAdr(item){
                 this.$router.push({name:'addAddress',params:{id:item.id}});
             }
@@ -146,7 +140,6 @@
 
     8. 保存地址时，首先判断信息是否填写完整，没有填写完整则给出相应的用户提示，完整则向后台发送请求，将地址信息保存到当前登录用户名下，并保存到本地存储中。
     
-    Code:
         save() { // 保存
             let telReg = /^1(3|4|5|7|8)\d{9}$/;
             let token = document.cookie.match(/717-token=(\d+)/)[1]; //717-token=18672870077
