@@ -1,0 +1,50 @@
+.layout {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+        transition: background-color 2s linear;
+}
+.layout-active{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-container {
+    width: 60%;
+    min-height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.7);
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #ccc;
+    transition: transform 2s linear;
+}
+.dialog-container-active{
+    transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+.dialog-title {
+    line-height: 30px;
+    text-indent: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.dialog-content {
+    line-height: 30px;
+    text-align: center;
+}
+
+.dialog-btns {
+    text-align: center;
+}
+
+.dialog-btns>button {
+    margin: 10px;
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
