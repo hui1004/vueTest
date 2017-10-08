@@ -3,40 +3,20 @@
     姓名： 杨佳慧
     性别： 女
     出生日期：19931004
-    电话： 18672870077
-
-# 项目目录
-
-* mock                // 生成随机数据，拦截Ajax请求,开始前后端分离
-    + mock.js         
-* service             // json数据
-    + addCart.json    
-    + catagory.json
-    + city.json
-    + goods_channel.json
-* src              
-    + assets
-    + components       // 组件
-        - global_mask // 遮罩层
-        - goods       // 单个商品
-        - recommend   // 热门推荐
-        - tips        // 提示框
-    + css              // 公用样式
-    + font             // 字体图标
-    + imgs             // 图片
-    + js
-    + plugins
-        - dialog       // dialog插件
-    + route            // 路由配置
-    + store            // vuex状态管理
-    + views            // 各页面视图模板
-    + app.vue          
-    + main.js    
-* index.html
-* package.json         // 包管理文件      
-* webpack.config.js    // 配置文件     
+    电话： 18672870077    
 
 # 项目总结
+
+    项目结构：
+        目录mock: 生成随机数据，拦截Ajax请求,开始前后端分离
+        目录service：json数据
+        目录components：存放单个组件
+        目录plugins: 存放插件
+        目录route: 路由配置
+        目录store: vuex状态管理
+        目录views: 存放路由视图
+
+    项目总结：
 
 * 仿照717商城，实现717商城首页，商品详情页，用户登录注册页，购物车等效果。
 
