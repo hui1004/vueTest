@@ -165,13 +165,13 @@
     2. 编辑状态下,将选中的商品id, push到数组里,将数组提交到vuex的store里，运用store里的mutations来遍历购物车商品数组和id数组，从而排重，然后删除选中数据。通过路由钩子beforeRouteEnter将用户登陆的token和其购物车数据绑定到一起。
         <pre>
             delItem(state,idArr) { // 购物车删除数据
-                let temp = [],tempArr = [];
+                let temp = [],tempArr = []; //临时数组temp/tempArr  
                 for(let i=0;i&lt;idArr.length;i++){
-                    temp[idArr[i]] = true;
+                    temp[idArr[i]] = true; //把数组idArr的值当成临时数组temp的键并赋值为真
                 }
                 for(let i=0;i&lt;state.cart_list.length;i++){
                     if(!temp[state.cart_list[i].id]){
-                        tempArr.push(state.cart_list[i]);
+                        tempArr.push(state.cart_list[i]); //同时把数组state.cart_list的值当成临时数组temp的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组
                     }
                 }
                 state.cart_list = tempArr;
@@ -394,7 +394,10 @@
                 }
             }
         </pre>
-
+    
+    项目难点：
+        购物车全选单选：一开始将购物车内的单个商品封装成组件渲染，避免了单选时选中一个其他商品也同时被选中的情况，但在全选时，组件通信过程中通过传递控制的变量来实现单选和全选的关联时遇到了困难。后取消了单个产品的组价封装，通过set注册新的变量到vue的监听里去，用来控制产品的单选和全选。解决了这一问题。
+        
 # 项目git地址
 
     [vue-717](https://github.com/hui1004/vueTest.git)
