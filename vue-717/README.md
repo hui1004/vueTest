@@ -18,7 +18,7 @@
 
 * 仿照717商城，实现717商城首页，商品详情页，用户登录注册页，购物车等效果。
 
-* 工具es6、vue、mock、vuex、router-loader、swiper、vue-router、axios、Gulp等。
+* 工具es6、vue、mock、vuex、router-loader、swiper、vue-router、axios等。
         
 * 首页
     1. 在首页用swiper做banner图的轮播效果，利用icon图标做图标列表，减少浏览器的请求速度。
@@ -400,5 +400,5 @@
         
 # 项目git地址
 
-    [vue-717](https://github.com/hui1004/vueTest.git)
+    https://github.com/hui1004/vueTest.git
     
