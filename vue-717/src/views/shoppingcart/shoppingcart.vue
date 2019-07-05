@@ -64,7 +64,6 @@
 <script>
 // import hotRecommend from '../../components/recommend/recommend.vue';
 import tips from '../../components/tips/tips.vue';
-import cartItem from './cartItem.vue';
 import { mapState } from 'vuex';
 import axios from 'axios';
 import store from '../../store/store.js';
@@ -206,7 +205,6 @@ export default {
     },
     components: {
         // hotRecommend,
-        'cart-item': cartItem,
         'tips': tips
     }
 }
